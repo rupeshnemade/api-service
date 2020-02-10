@@ -1,4 +1,4 @@
-- Installation
+- Installation:-
 
 Create a folder to hold your installation.
 
@@ -6,7 +6,7 @@ mkdir hotelService.
 
 Copy the contents of the 'api-service.zip' to your newly created folder.
 
-- Docker
+- Docker:-
 
 The easiest way to get up and running is using Docker. Once the Docker CLI is installed from https://www.docker.com/get-docker.
 
