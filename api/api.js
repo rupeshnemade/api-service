@@ -40,4 +40,4 @@ app.use('/api', router);
 // Start the server
 // =============================================================================
 app.listen(port);
-console.log('Worker service started on port ' + port);
+console.log('API service started on port ' + port);
