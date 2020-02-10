@@ -1,0 +1,83 @@
+swagger: "2.0"
+info:
+  description: "This is a sample Hotel accomodation server."
+  version: "1.0.0"
+  title: "Swagger Accomodation"
+  termsOfService: "http://swagger.io/terms/"
+  contact:
+    email: "rupesh.nemade@gmail.com"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "accomodation.swagger.io"
+basePath: "/"
+tags:
+- name: "accomodation"
+  description: "Everything about your Accomodation"
+schemes:
+- "http"
+paths:
+  /api/create:
+    post:
+      tags:
+      - "accomodation"
+      summary: "Add a new accomodation details"
+      description: ""
+      operationId: "addAccomodation"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Hotel accomodation object that needs to be added to the database"
+        required: true
+        schema:
+          $ref: "#/definitions/Accomodation"
+      responses:
+        405:
+          description: "Invalid input"
+  /api/:
+    get:
+      tags:
+      - "accomodation"
+      summary: "Get all accomodation details"
+      description: "Lists all accomodations"
+      operationId: "listAccomodation"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Accomodation"
+        400:
+          description: "No records found"
+definitions:
+  Accomodation:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      rating:
+        type: "integer"
+      category:
+        type: "string"
+      location:
+        type: "object"
+        properties:
+          city:
+            type: "string"
+          state:
+            type: "string"
+          country:
+            type: "string"
+          zip_code:
+            type: "integer"
+          address:
+            type: "string"
+      image:
+        type: "string"

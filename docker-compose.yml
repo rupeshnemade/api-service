@@ -1,0 +1,49 @@
+version: "3"
+
+services:
+  nats:
+    image: 'nats:0.8.0'
+    entrypoint: "/gnatsd -DV"
+    expose:
+      - "4222"
+    ports:
+      - "8222:8222"
+    restart: always
+    hostname: nats-server
+    networks:
+      - frontend
+      - backend
+  api:
+    build:
+      context: "./api"
+      dockerfile: Dockerfile
+    environment:
+      - "NATS_URI=nats://nats:4222"
+      - "PORT=8080"
+    depends_on:
+      - nats
+    restart: always
+    ports:
+      - "8080:8080"
+    networks:
+      - frontend
+  worker:
+    build:
+      context: "./worker"
+      dockerfile: Dockerfile
+    environment:
+      - "NATS_URI=nats://nats:4222"
+      - "PORT=8081"
+    depends_on:
+      - nats
+    restart: always
+    ports:
+      - "8081:8081"
+    networks:
+      - backend
+      
+networks:
+  frontend:
+    driver: bridge
+  backend:
+    driver: bridge
