@@ -6,7 +6,7 @@ var express    = require('express');        // call express
 var app        = express();                 // define our app using express
 var bodyParser = require('body-parser');
 
-var uri 	   = process.env.NATS_URI
+var uri        = process.env.NATS_URI
 const NATS     = require('nats')
 const nc       = NATS.connect(uri,{ json: true })
 
