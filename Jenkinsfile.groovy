@@ -68,13 +68,6 @@ pipeline {
         stage('ECR push') {
             steps {
                 script {
-                    withCredentials([[
-                                             $class: 'AmazonWebServicesCredentialsBinding',
-                                             credentialsId: 'AW2_UploadUser',
-                                             accessKeyVariable: 'AWS_ACCESS_KEY_ID',
-                                             secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
-                        sh '/init.sh'
-
                         echo "Login to ECR"
                         sh '$(/usr/local/bin/aws ecr get-login --no-include-email --region $REGION)'
 
@@ -91,7 +84,6 @@ pipeline {
 
                         sh 'docker rmi $apiService_ECR_URL:latest'
                         sh 'docker rmi $workerService_ECR_URL:latest'
-                    }
                 }
             }
         }
