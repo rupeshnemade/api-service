@@ -1,7 +1,7 @@
 - Installation
 
-Create a folder to hold your installation: 
-   mkdir hotelService
+Create a folder to hold your installation.
+mkdir hotelService.
 Copy the contents of the 'api-service.zip' to your newly created folder.
 
 - Docker
