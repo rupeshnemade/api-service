@@ -23,8 +23,8 @@ pipeline {
 
     environment {
         projectName           = 'HotelServiceApp'
-        urlPrefix             = 'https://github.com/rupesnemade/'
-        projectUrl            = "${urlPrefix}/AccomodationService.git"
+        urlPrefix             = 'https://github.com/rupeshnemade'
+        projectUrl            = "${urlPrefix}/api-service.git"
 
         apiService_ECR_URL    = "960885402552.dkr.ecr.us-east-1.amazonaws.com/hotel/apiervice"
         workerService_ECR_URL = "960885402552.dkr.ecr.us-east-1.amazonaws.com/hotel/workerservice"
